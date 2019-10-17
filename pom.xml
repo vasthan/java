@@ -59,5 +59,6 @@
 	<modules>
 		<module>java5</module>
 		<module>java8</module>
+		<module>jvm</module>
 	</modules>
 </project>

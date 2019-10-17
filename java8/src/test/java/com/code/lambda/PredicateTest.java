@@ -1,7 +1,7 @@
 package com.code.lambda;
 
-import com.feature.model.Apple;
-import com.feature.util.AppleUtil;
+import com.adc.model.Apple;
+import com.adc.util.AppleUtil;
 import org.junit.Before;
 import org.junit.Test;
 

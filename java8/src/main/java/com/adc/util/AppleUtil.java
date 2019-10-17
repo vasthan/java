@@ -1,7 +1,7 @@
-package com.feature.util;
+package com.adc.util;
 
-import com.feature.model.Apple;
-import com.feature.predicate.AppleFormatter;
+import com.adc.model.Apple;
+import com.adc.predicate.AppleFormatter;
 
 import java.util.ArrayList;
 import java.util.List;

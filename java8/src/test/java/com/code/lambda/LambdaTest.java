@@ -1,21 +1,18 @@
 package com.code.lambda;
 
-import com.feature.model.Apple;
-import com.feature.util.AppleUtil;
+import com.adc.model.Apple;
+import com.adc.util.AppleUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.experimental.theories.suppliers.TestedOn;
 
 import java.io.File;
 import java.io.FileFilter;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.function.BinaryOperator;
 import java.util.function.IntBinaryOperator;
 import java.util.function.Predicate;
-import java.util.function.ToIntBiFunction;
 
 public class LambdaTest {
     private List<Apple> inventory;

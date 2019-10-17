@@ -1,4 +1,4 @@
-package com.feature.model;
+package com.adc.model;
 
 import lombok.Getter;
 import lombok.Setter;

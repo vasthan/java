@@ -1,4 +1,4 @@
-package com.feature.predicate;
+package com.adc.predicate;
 
 public interface AppleFormatter<Apple> {
 

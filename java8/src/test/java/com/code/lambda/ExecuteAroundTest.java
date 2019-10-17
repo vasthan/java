@@ -1,6 +1,6 @@
 package com.code.lambda;
 
-import com.feature.function.FileProcessor;
+import com.adc.function.FileProcessor;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

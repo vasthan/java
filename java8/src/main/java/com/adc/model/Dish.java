@@ -1,4 +1,4 @@
-package com.feature.model;
+package com.adc.model;
 
 public class Dish {
     private final String name;

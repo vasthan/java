@@ -1,9 +1,9 @@
 package com.code.stream;
 
 import com.alibaba.fastjson.JSON;
-import com.feature.model.Apple;
-import com.feature.model.Dish;
-import com.feature.util.AppleUtil;
+import com.adc.model.Apple;
+import com.adc.model.Dish;
+import com.adc.util.AppleUtil;
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;

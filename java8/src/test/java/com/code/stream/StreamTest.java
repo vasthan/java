@@ -1,6 +1,6 @@
 package com.code.stream;
 
-import com.feature.model.Dish;
+import com.adc.model.Dish;
 import com.google.common.collect.Lists;
 import org.junit.Before;
 import org.junit.Test;

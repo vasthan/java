@@ -1,4 +1,4 @@
-package com.adc.visible;
+package com.adc.concurrency;
 
 /**
  * 多线程内存可见性测试
@@ -16,9 +16,17 @@ public class TestVisibility {
     }
 
     private static class ThreadSafeCounter extends Counter{
+        // synchronized修饰的方法编译后会有ACC_SYNCHRONIZED标记
         @Override
         public synchronized void increment() {
             count++;
+        }
+
+        public void increment2() {
+            // synchronized修饰的代码块编译后会在临界区前后插入monitorenter和monitorexit指令
+            synchronized (this) {
+                count++;
+            }
         }
 
         @Override

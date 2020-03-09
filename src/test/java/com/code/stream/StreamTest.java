@@ -180,7 +180,7 @@ public class StreamTest {
         scoreStream.forEach(System.out::println);
 
         // 文件生成流
-        Stream<String> lineStream = Files.lines(Paths.get("/Users/yanghanqing/code/java/java8/src/test/resources/data.txt"), Charset.defaultCharset());
+        Stream<String> lineStream = Files.lines(Paths.get("/Users/yanghanqing/code/java/src/test/resources/data.txt"), Charset.defaultCharset());
         lineStream.forEach(System.out::println);
 
     }

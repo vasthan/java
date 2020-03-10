@@ -35,7 +35,7 @@ public class TestVisibility {
         }
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 //        Counter counter = new Counter();
         Counter counter = new ThreadSafeCounter();
         Thread t1 = new Thread(() -> {
@@ -52,8 +52,16 @@ public class TestVisibility {
 
         t1.start();
         t2.start();
-        t1.join();
-        t2.join();
+        try {
+            t1.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
+            t2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         System.out.println(counter.get());
     }
 }

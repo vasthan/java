@@ -11,8 +11,6 @@ public class CountDownLatchTest {
         ExecutorService executor = Executors.newFixedThreadPool(2);
         CountDownLatch latch = new CountDownLatch(2);
 
-        CyclicBarrier barrier = new CyclicBarrier(2);
-
         List<Integer> resource1 = new ArrayList<>(); // 资源1
         List<Integer> resource2 = new ArrayList<>(); // 资源2
 

@@ -1,0 +1,75 @@
+python -u /home/datasync/bin/sync_operator.py --reader-type "hive" --reader-ip "192.168.36.172" --reader-port "10000" --reader-username "hadoop" --reader-db "default" --reader-table "default.ng_partition" --reader-column "[{\"name\":\"stat_date\",\"index\":0,\"type\":\"string\"},{\"name\":\"domain\",\"index\":1,\"type\":\"string\"},{\"name\":\"pv\",\"index\":2,\"type\":\"int\"},{\"name\":\"rn\",\"index\":3,\"type\":\"int\"}]" --reader-partition "ds=2019-11-15" --reader-nullformat "\N" --reader-filetype "text" --writer-type "palo" --writer-ip "192.168.35.58" --writer-port "9030" --writer-username "sync_user" --writer-password "sync_user" --writer-db "test_sync" --writer-table "ng_part" --writer-column "[{\"name\":\"stat_date\",\"index\":0,\"type\":\"varchar\"},{\"name\":\"domain\",\"index\":1,\"type\":\"varchar\"},{\"name\":\"pv\",\"index\":2,\"type\":\"int\"},{\"name\":\"rn\",\"index\":3,\"type\":\"int\"}]" 加载配置文件：/home/datasync/bin/env.py
+tblname: default.deleteme_sync_ng_part_20200317174111
+pre_cmd: hive -e "create table default.deleteme_sync_ng_part_20200317174111 as select stat_date,domain,pv,rn from default.ng_partition where ds='2019-11-15'"
+post_cmd: hive -e "drop table default.deleteme_sync_ng_part_20200317174111"
+执行Hive导入Palo操作SQL:
+LOAD LABEL sync_operator_ng_part_20200316174111
+        (
+            DATA INFILE("hdfs://nameservice1/user/hive/warehouse/deleteme_sync_ng_part_20200317174111//*")
+            INTO TABLE ng_part
+            COLUMNS TERMINATED BY ""
+            (`stat_date`,`domain`,`pv`,`rn`)
+        )
+        WITH BROKER hdfs_broker ("username"="hadoop", "password"="hadoop", "dfs.nameservices"="nameservice1", "dfs.namenode.rpc-address.nameservice1.namenode175"="tnamenode1:8020", "dfs.ha.namenodes.nameservice1"="namenode175,namenode196", "dfs.client.use.datanode.hostname"="true", "dfs.namenode.rpc-address.nameservice1.namenode196"="tnamenode2:8020", "dfs.client.failover.proxy.provider.nameservice1"="org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider")
+        PROPERTIES
+        (
+            "timeout"="300",
+            "max_filter_ratio"="0",
+            "exec_mem_limit"="2147483648",
+	        "strict_mode"="true"
+        )
+执行pre_cmd: hive -e "create table default.deleteme_sync_ng_part_20200317174111 as select stat_date,domain,pv,rn from default.ng_partition where ds='2019-11-15'"
+执行cmd命令：hive -e "create table default.deleteme_sync_ng_part_20200317174111 as select stat_date,domain,pv,rn from default.ng_partition where ds='2019-11-15'"
+
+Logging initialized using configuration in jar:file:/opt/cloudera/parcels/CDH-5.5.2-1.cdh5.5.2.p0.4/jars/hive-common-1.1.0-cdh5.5.2.jar!/hive-log4j.properties
+Query ID = datasync_20200317174141_97ee77fd-21b2-4ce8-874b-7c39d21fda1b
+Total jobs = 3
+Launching Job 1 out of 3
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1574068356034_7798, Tracking URL = http://tnamenode1:8088/proxy/application_1574068356034_7798/
+Kill Command = /opt/cloudera/parcels/CDH-5.5.2-1.cdh5.5.2.p0.4/lib/hadoop/bin/hadoop job  -kill job_1574068356034_7798
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 0
+2020-03-17 17:41:28,333 Stage-1 map = 0%,  reduce = 0%
+2020-03-17 17:41:33,586 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 1.23 sec
+MapReduce Total cumulative CPU time: 1 seconds 230 msec
+Ended Job = job_1574068356034_7798
+Stage-4 is selected by condition resolver.
+Stage-3 is filtered out by condition resolver.
+Stage-5 is filtered out by condition resolver.
+Moving data to: hdfs://tnameservice1/user/hive/warehouse/.hive-staging_hive_2020-03-17_17-41-18_645_7160988378759944829-1/-ext-10001
+Moving data to: hdfs://tnameservice1/user/hive/warehouse/deleteme_sync_ng_part_20200317174111
+Table default.deleteme_sync_ng_part_20200317174111 stats: [numFiles=1, numRows=7, totalSize=246, rawDataSize=239]
+MapReduce Jobs Launched:
+Stage-Stage-1: Map: 1   Cumulative CPU: 1.23 sec   HDFS Read: 3617 HDFS Write: 347 SUCCESS
+Total MapReduce CPU Time Spent: 1 seconds 230 msec
+OK
+Time taken: 16.388 seconds
+JobId:18915 State:PENDING Progress:ETL:N/A; LOAD:0% [2020-03-17 17:41:35 N/A N/A N/A N/A]
+JobId:18915 State:PENDING Progress:ETL:N/A; LOAD:0% [2020-03-17 17:41:35 N/A N/A N/A N/A]
+JobId:18915 State:LOADING Progress:ETL:N/A; LOAD:0% [2020-03-17 17:41:35 2020-03-17 17:41:38 2020-03-17 17:41:38 2020-03-17 17:41:38 N/A]
+JobId:18915 State:LOADING Progress:ETL:N/A; LOAD:0% [2020-03-17 17:41:35 2020-03-17 17:41:38 2020-03-17 17:41:38 2020-03-17 17:41:38 N/A]
+JobId:18915 State:LOADING Progress:ETL:N/A; LOAD:0% [2020-03-17 17:41:35 2020-03-17 17:41:41 2020-03-17 17:41:41 2020-03-17 17:41:41 N/A]
+JobId:18915 State:FINISHED Progress:ETL:N/A; LOAD:100% [2020-03-17 17:41:35 2020-03-17 17:41:41 2020-03-17 17:41:41 2020-03-17 17:41:41 2020-03-17 17:41:45]
+{
+    "JobId": "18915",
+    "Label": "sync_operator_ng_part_20200316174111",
+    "State": "FINISHED",
+    "Progress": "ETL:N/A; LOAD:100%",
+    "Type": "BROKER",
+    "EtlInfo": "dpp.abnorm.ALL=0; dpp.norm.ALL=7",
+    "TaskInfo": "cluster:N/A; timeout(s):300; max_filter_ratio:0.0",
+    "ErrorMsg": "N/A",
+    "CreateTime": "2020-03-17 17:41:35",
+    "EtlStartTime": "2020-03-17 17:41:41",
+    "EtlFinishTime": "2020-03-17 17:41:41",
+    "LoadStartTime": "2020-03-17 17:41:41",
+    "LoadFinishTime": "2020-03-17 17:41:45",
+    "URL": "N/A"
+}
+执行post_cmd: hive -e "drop table default.deleteme_sync_ng_part_20200317174111"
+执行cmd命令：hive -e "drop table default.deleteme_sync_ng_part_20200317174111"
+
+Logging initialized using configuration in jar:file:/opt/cloudera/parcels/CDH-5.5.2-1.cdh5.5.2.p0.4/jars/hive-common-1.1.0-cdh5.5.2.jar!/hive-log4j.properties
+OK
+Time taken: 0.753 seconds
+算子hive-palo成功执行完毕！

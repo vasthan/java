@@ -9,6 +9,7 @@ public class LockInterruptibly implements Runnable{
     @Override
     public void run() {
         try {
+            // 可以响应中断
             lock.lockInterruptibly();
             try {
                 try {

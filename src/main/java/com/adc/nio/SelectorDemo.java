@@ -2,7 +2,6 @@ package com.adc.nio;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.net.SocketOption;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
@@ -22,7 +21,7 @@ public class SelectorDemo {
         server.register(selector, SelectionKey.OP_ACCEPT);
 
         while (true) {
-            selector.select()
+            selector.select();
             Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
             while (iterator.hasNext()) {
                 SelectionKey key = iterator.next();

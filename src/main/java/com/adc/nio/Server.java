@@ -3,10 +3,7 @@ package com.adc.nio;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
-import java.nio.channels.ServerSocketChannel;
-import java.nio.channels.SocketChannel;
+import java.nio.channels.*;
 import java.util.Iterator;
 
 public class Server {
@@ -35,6 +32,9 @@ public class Server {
 
                     // 注册channel到selector上，订阅IO可读事件
                     channel.register(selector, SelectionKey.OP_READ);
+                } else if (key.isReadable()) {
+                    SelectableChannel channel = key.channel();
+
                 }
             }
         }

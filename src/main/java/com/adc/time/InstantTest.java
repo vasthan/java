@@ -1,6 +1,7 @@
 package com.adc.time;
 
 import java.time.Instant;
+import java.util.Date;
 
 /**
  * Instant表示一个时刻、一个瞬间
@@ -16,5 +17,11 @@ public class InstantTest {
         System.out.println(Instant.ofEpochSecond(2, 1_000_000_000));
         // 1970-01-01 00:00:00 加上 4秒，再减去1_000_000_000纳秒
         System.out.println(Instant.ofEpochSecond(4, -1_000_000_000));
+
+
+        // Instant和Date转换
+        Date date = Date.from(Instant.now());
+        Instant instant = date.toInstant();
+        System.out.println(instant);
     }
 }

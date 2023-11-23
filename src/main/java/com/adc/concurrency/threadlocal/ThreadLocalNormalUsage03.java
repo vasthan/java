@@ -27,15 +27,6 @@ public class ThreadLocalNormalUsage03 {
         return formatter.format(new Date(seconds * 1000));
     }
 
-    static class ThreadSafeFormatter1 {
-        public static ThreadLocal<DateFormat> holder = new ThreadLocal<>(){
-            @Override
-            protected DateFormat initialValue() {
-                return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            }
-        };
-    }
-
     static class ThreadSafeFormatter2 {
         // 推荐写法：简洁
         public static ThreadLocal<DateFormat> holder = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
